@@ -1,5 +1,7 @@
 package org.kevin.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Getter
@@ -8,6 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class StudentDto {
-    public String name;
-    public String address;
+    @NotBlank(message = "Name is required")
+    @Size(min = 2, max = 50, message = "nama harus lebih dari 2 huruf dan kurang dari 50 huruf")
+    private String name;
+
+    @NotBlank(message = "Address is required")
+    private String address;
 }
